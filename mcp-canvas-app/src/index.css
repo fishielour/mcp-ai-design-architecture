@@ -1,0 +1,377 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+button,
+textarea {
+  font: inherit;
+}
+
+.display-face {
+  font-family: var(--font-display);
+}
+
+/* ── Canvas grid background ── */
+.canvas-grid {
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--color-secondary) 12%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--color-secondary) 12%, transparent) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* ── Tab bar ── */
+.tab-bar {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-background) 70%, white 30%);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 18%, transparent);
+  backdrop-filter: blur(12px);
+  width: fit-content;
+}
+
+.tab-btn {
+  padding: 8px 20px;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  color: var(--color-secondary);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  cursor: pointer;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: var(--font-body);
+  white-space: nowrap;
+}
+
+.tab-btn:hover {
+  color: var(--color-foreground);
+}
+
+.tab-btn.active {
+  background: var(--color-accent);
+  color: var(--color-background);
+  box-shadow: 0 4px 16px color-mix(in srgb, var(--color-accent) 32%, transparent);
+}
+
+/* ── Viewport buttons ── */
+.viewport-bar {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-background) 70%, white 30%);
+  border: 1px solid color-mix(in srgb, var(--color-secondary) 18%, transparent);
+  backdrop-filter: blur(12px);
+  width: fit-content;
+}
+
+.viewport-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--color-secondary);
+  cursor: pointer;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  font-size: 16px;
+}
+
+.viewport-btn:hover {
+  color: var(--color-foreground);
+}
+
+.viewport-btn.active {
+  background: var(--color-accent);
+  color: var(--color-background);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--color-accent) 32%, transparent);
+}
+
+/* ── Preview iframe container ── */
+.preview-frame-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 0;
+}
+
+.preview-frame-container {
+  position: relative;
+  border-radius: 28px;
+  border: 1px solid color-mix(in srgb, var(--color-accent) 22%, transparent);
+  overflow: hidden;
+  background: var(--color-background);
+  box-shadow:
+    0 40px 100px color-mix(in srgb, var(--color-foreground) 12%, transparent),
+    0 0 0 1px color-mix(in srgb, var(--color-accent) 8%, transparent);
+  transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.preview-iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 680px;
+  border: none;
+  display: block;
+}
+
+/* ── Glassmorphic overlay ── */
+.preview-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  background: color-mix(in srgb, var(--color-background) 72%, transparent);
+  backdrop-filter: blur(24px) saturate(1.4);
+  border-radius: 28px;
+  z-index: 10;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.preview-overlay.faded {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.overlay-spinner {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 3px solid color-mix(in srgb, var(--color-accent) 20%, transparent);
+  border-top-color: var(--color-accent);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.overlay-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.32em;
+  color: var(--color-secondary);
+}
+
+.overlay-phase {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--color-foreground);
+}
+
+/* ── Design system showcase ── */
+.ds-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.ds-section {
+  border: 1px solid color-mix(in srgb, var(--color-accent) 22%, transparent);
+  border-radius: 28px;
+  padding: 1.5rem;
+  background: color-mix(in srgb, var(--color-background) 86%, white 14%);
+  display: grid;
+  gap: 1rem;
+}
+
+.ds-section-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: var(--color-secondary);
+  margin: 0;
+}
+
+.ds-swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.ds-swatch {
+  width: 72px;
+  display: grid;
+  gap: 6px;
+  text-align: center;
+}
+
+.ds-swatch-circle {
+  width: 72px;
+  height: 72px;
+  border-radius: 22px;
+  border: 1px solid color-mix(in srgb, var(--color-secondary) 18%, transparent);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--color-foreground) 8%, transparent);
+}
+
+.ds-swatch-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-secondary);
+}
+
+.ds-swatch-hex {
+  font-size: 10px;
+  font-family: monospace;
+  color: var(--color-foreground);
+  opacity: 0.7;
+}
+
+.ds-typo-sample {
+  display: grid;
+  gap: 8px;
+}
+
+.ds-typo-display {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  line-height: 1.1;
+}
+
+.ds-typo-body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-secondary);
+}
+
+.ds-spacing-blocks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: end;
+}
+
+.ds-spacing-block {
+  display: grid;
+  gap: 6px;
+  text-align: center;
+}
+
+.ds-spacing-visual {
+  background: color-mix(in srgb, var(--color-accent) 24%, transparent);
+  border-radius: 8px;
+  width: 48px;
+}
+
+.ds-spacing-label {
+  font-size: 10px;
+  color: var(--color-secondary);
+  font-family: monospace;
+}
+
+.ds-motion-card {
+  border: 1px solid color-mix(in srgb, var(--color-accent) 22%, transparent);
+  border-radius: 22px;
+  padding: 1rem;
+  display: grid;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ds-motion-card:hover {
+  transform: scale(1.02);
+}
+
+.ds-motion-card:active {
+  transform: scale(0.98);
+}
+
+.ds-motion-name {
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.ds-motion-meta {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--color-secondary);
+}
+
+.ds-motion-bar {
+  height: 4px;
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--color-accent) 20%, transparent);
+  overflow: hidden;
+  position: relative;
+}
+
+.ds-motion-bar-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  border-radius: 2px;
+  background: var(--color-accent);
+}
+
+.ds-motion-card:hover .ds-motion-bar-fill {
+  width: 100%;
+}
+
+.ds-radius-blocks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.ds-radius-sample {
+  display: grid;
+  gap: 6px;
+  text-align: center;
+}
+
+.ds-radius-visual {
+  width: 64px;
+  height: 64px;
+  border: 2px solid var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 8%, transparent);
+}
+
+.ds-radius-label {
+  font-size: 10px;
+  color: var(--color-secondary);
+  font-family: monospace;
+}
+
+/* ── Split layout ── */
+.split-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  min-height: 680px;
+}
+
+@media (max-width: 1024px) {
+  .split-layout {
+    grid-template-columns: 1fr;
+  }
+}

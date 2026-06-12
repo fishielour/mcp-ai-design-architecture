@@ -1,0 +1,31 @@
+{
+  "name": "mcp-elite-design-architect-hub",
+  "version": "0.1.0",
+  "description": "A staged MCP server that coordinates multi-agent visionary design workflows.",
+  "private": true,
+  "type": "module",
+  "main": "src/server-stdio.js",
+  "workspaces": [
+    "mcp-canvas-app"
+  ],
+  "scripts": {
+    "start": "node src/server.js",
+    "start:canvas": "node src/server.js",
+    "start:stdio": "node src/server-stdio.js",
+    "dev:canvas": "npm run dev --workspace mcp-canvas-app",
+    "build:canvas": "npm run build --workspace mcp-canvas-app",
+    "test": "node --test --test-isolation=none"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "jszip": "^3.10.1",
+    "ws": "^8.18.3"
+  },
+  "keywords": [
+    "mcp",
+    "design",
+    "multi-agent",
+    "server"
+  ],
+  "license": "MIT"
+}

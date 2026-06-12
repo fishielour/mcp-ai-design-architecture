@@ -1,0 +1,14 @@
+node_modules/
+coverage/
+.mcp-elite-design-state.json
+artifacts/
+dist/
+*.log
+stdio-keepalive-*
+server-stdout
+server-stderr
+
+# Ignore local design preview states in the canvas app
+mcp-canvas-app/public/design.json
+mcp-canvas-app/public/product.html
+

@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "elite-design-architect-hub": {
+      "command": "node",
+      "args": [
+        "/absolute/path/to/cloned/repo/src/server-stdio.js"
+      ]
+    }
+  }
+}
