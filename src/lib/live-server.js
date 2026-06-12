@@ -5,8 +5,8 @@ import { URL } from "node:url";
 import { WebSocketServer } from "ws";
 import { toJsonRpcError } from "./errors.js";
 
-const DEFAULT_HOST = process.env.MCP_WEB_HOST ?? "127.0.0.1";
-const DEFAULT_PORT = Number.parseInt(process.env.MCP_WEB_PORT ?? "3210", 10);
+const DEFAULT_HOST = process.env.MCP_WEB_HOST ?? process.env.IP ?? process.env.HOST ?? "0.0.0.0";
+const DEFAULT_PORT = Number.parseInt(process.env.MCP_WEB_PORT ?? process.env.PORT ?? "3210", 10);
 
 function sendJson(response, statusCode, payload) {
   response.writeHead(statusCode, {
