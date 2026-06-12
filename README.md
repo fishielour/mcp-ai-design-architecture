@@ -149,8 +149,11 @@ The easiest way to host the `mcp-canvas-app` is via Vercel:
 
 The backend must run continuously to process live WebSocket connections and provide the MCP endpoints. Here are completely free options you can use:
 
+- **Adaptable.io (Highly Recommended):** Excellent free tier for Node.js apps. Extremely easy to deploy from GitHub, supports WebSockets, and doesn't require a credit card.
+- **Alwaysdata:** Provides a free 100MB environment. Great if you want to avoid credit cards and just need a small space to run the server.
 - **Render (Free Tier):** Render offers a free Web Service tier. Note: Free instances will spin down after 15 minutes of inactivity, which can cause a short delay the next time you use it.
 - **Glitch:** A great fully free playground that can host Node.js WebSocket servers (also spins down when inactive).
+- **Fly.io:** Requires a credit card to prevent abuse (but won't charge you). Their free allowance is very generous for running small, always-on WebSocket servers.
 
 **General Deployment Steps (e.g., on Render):**
 1. Create an account and start a new **Web Service**.
