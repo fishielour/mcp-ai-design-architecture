@@ -147,20 +147,19 @@ The easiest way to host the `mcp-canvas-app` is via Vercel:
 
 ### 2. Deploy the Backend MCP Server (Free Options)
 
-The backend must run continuously to process live WebSocket connections and provide the MCP endpoints. Here are a few completely free or generous free-tier platforms you can use:
+The backend must run continuously to process live WebSocket connections and provide the MCP endpoints. Here are completely free options you can use:
 
-- **Koyeb (Recommended Free Tier):** Koyeb offers a free tier that is excellent for Node.js WebSocket servers. 
 - **Render (Free Tier):** Render offers a free Web Service tier. Note: Free instances will spin down after 15 minutes of inactivity, which can cause a short delay the next time you use it.
 - **Glitch:** A great fully free playground that can host Node.js WebSocket servers (also spins down when inactive).
 
-**General Deployment Steps (e.g., on Koyeb or Render):**
+**General Deployment Steps (e.g., on Render):**
 1. Create an account and start a new **Web Service**.
 2. Connect your GitHub repository.
 3. Use the following configurations:
    - **Root Directory**: `.` (the main repository folder)
    - **Build Command**: `npm install`
    - **Start Command**: `node src/server.js`
-4. Deploy the service. Your provider will give you a backend URL (e.g., `https://my-backend.koyeb.app`).
+4. Deploy the service. Your provider will give you a backend URL (e.g., `https://my-backend.onrender.com`).
 
 ### 3. Connect the Frontend and Backend
 
@@ -169,7 +168,7 @@ Once both are deployed, you must tell your frontend where the backend WebSocket 
 1. Go to your frontend hosting provider (Vercel) > **Settings** > **Environment Variables**.
 2. Add a new variable:
    - **Name**: `VITE_MCP_WS_URL`
-   - **Value**: Your backend's WebSocket URL. (Change `https://` to `wss://` — e.g., `wss://my-backend.koyeb.app/ws`).
+   - **Value**: Your backend's WebSocket URL. (Change `https://` to `wss://` — e.g., `wss://my-backend.onrender.com/ws`).
 3. Trigger a redeploy of your frontend so the environment variables take effect.
 
 Now, anyone with your frontend URL can view the live canvas, and any remote MCP agents connected to your backend will update the interface in real-time!
